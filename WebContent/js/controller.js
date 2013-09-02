@@ -27,7 +27,7 @@ function MainController($scope) {
   menuOptions.push({state:"disabled", name:"Live Community", url : "#community"});
 
   var menus = $scope.menus = [];
-  menus.push({name:"Blog", url : "#contact"});
+  menus.push({name:"Blog", url : "#blogs"});
   menus.push({name:"Contact Us", url : "mailto:referspark@gmail.com?subject=Help Needed"});
   //menus.push({name:"Sign In", url : "#contact"});
   
