@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.referspark.api.response.LoginResponse;
+import com.referspark.api.response.GenericSuccessFailureResponse;
 import com.referspark.service.LoginService;
 
 @Controller
@@ -20,7 +20,7 @@ public class LoginController {
 	
 	@RequestMapping(value="/login", method = RequestMethod.GET)
 	@ResponseBody
-	public LoginResponse getLogin(HttpServletRequest req) { 
+	public GenericSuccessFailureResponse getLogin(HttpServletRequest req) { 
 		String username = req.getParameter("username");
 		String password = req.getParameter("password");
 		

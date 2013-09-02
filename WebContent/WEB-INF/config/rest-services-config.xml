@@ -34,11 +34,20 @@
       <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
       
       <bean id="loginService" class="com.referspark.service.LoginService">
-      		<property name="loginDao" ref="loginDao"></property>
+      		<property name="userDao" ref="userDao"></property>
       </bean>
-      <bean name="loginDao" class="com.referspark.dao.LoginDao">
+      <bean name="userDao" class="com.referspark.dao.UserDao">
 		<property name="sessionFactory" ref="ReferSparkSessionFactory" />
-	</bean>
+   	  </bean>
+   	  
+   	  <bean id="businessInterestService" class="com.referspark.service.campaign.ValidateBusinessInterestService">
+   	        <property name="userDao" ref="userDao"/>
+   	        <property name="businessDao" ref="businessDao"/>
+   	  </bean>
+   	  
+   	  <bean name="businessDao" class="com.referspark.dao.BusinessDao">
+		<property name="sessionFactory" ref="ReferSparkSessionFactory" />
+   	  </bean> 
         
       <!--Configures view for returning JSON to the client -->  
   <!--     <bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView">  

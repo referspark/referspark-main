@@ -2,64 +2,48 @@ package com.referspark.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.hibernate.annotations.GenericGenerator;
+
 @Entity
-@Table(name="business", uniqueConstraints=@UniqueConstraint(columnNames="id"))
+@Table(name="business", uniqueConstraints=@UniqueConstraint(columnNames="businessid"))
 @XmlRootElement(name = "business")
 public class Business {
 	@Id
+	@GenericGenerator(name="generator", strategy="increment")
+    @GeneratedValue(generator="generator")
 	@Column
-	int id;
-	
-	@Column
-	String username;
-	
-	@Column
-	String password;
+	Integer businessid;
 	
 	@Column
 	String name;
+		
+	@ManyToOne( targetEntity = User.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "userid", nullable = false)
+	private User user;
 	
-	@Column
-	String email;
-
-	public String getEmail() {
-		return email;
+	public User getUser() {
+		return user;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public int getId() {
-		return id;
+		return businessid;
 	}
 
 	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
+		this.businessid = id;
 	}
 
 	public String getName() {
