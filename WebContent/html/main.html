@@ -73,7 +73,7 @@
     <input type="email" class="input-xlarge" placeholder="{{labelEmail}}" style= "height : 35px" name="uEmail"  ng-model="user.email" required/>
 	&nbsp;&nbsp;
   	<input type="number" class="input-xlarge" placeholder="{{labelPhone}}" style= "height : 35px"  name="uNumber"  ng-model="user.number" ngMinlength="10" ngMaxlength= "11" />&nbsp;&nbsp;
-  	<button type="submit" class="btn btn-large btn-primary"  style= "height : 45px" ng-disabled="form.$invalid">Get Early Access</button>
+  	<button type="submit" class="btn btn-large btn-primary"  style= "height : 45px" ng-disabled="form.$invalid" ng-click="registeruser()">Get Early Access</button>
 	
 	<div ng-show="form.uEmail.$dirty && form.uEmail.$invalid">
           <span ng-show="form.uEmail.$error.required" style="color:#ff2a00">Please enter your email address.</span>

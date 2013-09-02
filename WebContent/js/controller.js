@@ -2,7 +2,7 @@ angular.module('bizSpark', ['ui.bootstrap']);
 
 
 
-function MainController($scope) {
+function MainController($scope, $http) {
 
   $scope.projectName = "Refer Spark";
   $scope.menu_more = "More<span class='caret'></span>";
@@ -41,6 +41,22 @@ function MainController($scope) {
     $scope.initiateSignUp = function() {
       $scope.signupEmailFocus = true;
 
+    };
+    
+    $scope.user = {};
+    $scope.registeruser = function() {
+    	//alert($scope.user.email);
+    	//alert($scope.user.number);
+    	
+    	$http({
+    		method : 'GET',
+    		url : '../api/addPotentialCustomer/' + '?' + 'email=' + $scope.user.email + '&mobile=' + $scope.user.number + '&businessname=' + $scope.user.businessName 
+    	}).success(function(data, status, headers){
+    		alert('User Added succesfully... Beautify me');
+    	}).error(function(data, status, header){
+    		alert('Error in creating user');
+    	});
+    	
     };
 };  
 
