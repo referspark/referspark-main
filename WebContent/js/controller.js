@@ -50,7 +50,7 @@ function MainController($scope, $http) {
     	
     	$http({
     		method : 'GET',
-    		url : '../api/addPotentialCustomer/' + '?' + 'email=' + $scope.user.email + '&mobile=' + $scope.user.number + '&businessname=' + $scope.user.businessName 
+    		url : '../api/addPotentialCustomer.json' + '?' + 'email=' + $scope.user.email + '&mobile=' + $scope.user.number + '&businessname=' + $scope.user.businessName 
     	}).success(function(data, status, headers){
     		alert('User Added succesfully... Beautify me');
     	}).error(function(data, status, header){
