@@ -1,36 +1,5 @@
-angular.module('bizSpark', []);
+angular.module('bizSpark', ['ui.bootstrap']);
 
-
-angular.module('bizSpark', [], function($routeProvider, $locationProvider) {
-  $routeProvider.when('/sendCoupon', {templateUrl: 'partials/sendCoupon.html', controller: CoreController }).
-              when('/redeemCoupon', {templateUrl: 'partials/redeemCoupon.html', controller: CoreController }).
-              when('/insights', {templateUrl: 'partials/insights.html', controller: CoreController }).
-              when('/customers', {templateUrl: 'partials/customers.html', controller: CoreController}).
-              when('/howitworks', {templateUrl: 'partials/howItWorks.html', controller: CoreController}).
-              otherwise({redirectTo : 'partials/temp.html'});
-
-  //$locationProvider.html5Mode(true);
-});
-
-
-angular.module('bizSpark').directive('ngFocus', function($timeout) {
-    return {
-        link: function ( scope, element, attrs ) {
-              scope.$watch( attrs.ngFocus, function ( val ) {
-                if ( angular.isDefined( val ) && val ) {
-                    alert('hfe');
-                    $timeout( function () { element[0].focus(); } );
-                }
-              }, true);
-
-              element.bind('blur', function () {
-                if ( angular.isDefined( attrs.ngFocusLost ) ) {
-                    scope.$apply( attrs.ngFocusLost );
-                }
-              });
-            }
-          };
-      });
 
 
 function MainController($scope) {
@@ -44,9 +13,9 @@ function MainController($scope) {
  
   var slides = $scope.slides = [];
   $scope.myInterval = 5000;
-  slides.push({image:"../assets/images/slide-01.jpg", title:"Looking for New customers ?", content: "Existing loyal customers will recommend your business to their friends and colleagues and drive new business", active: true}); 
-  slides.push({image:"../assets/images/slide-02.jpg", title:"Reward your Loyal Customers ", content: "Dont lose your customers to a competitor by rewarding your customers with discounts and offers !", active: false}); 
-  slides.push({image:"../assets/images/slide-03.jpg", title:"Track your deals and Improve", content: "Our recommendation engine will track all your deals and get insightful reports on how your business is growing", active: false}); 
+  slides.push({image:"../assets/images/mkting.jpeg", title:"Get New customers", content: "Existing loyal customers will recommend your business to their friends and colleagues and drive new business", active: true}); 
+  slides.push({image:"../assets/images/mkting.jpeg", title:"Reward your Loyal Customers ", content: "Dont lose your customers to a competitor by rewarding your customers with discounts and offers !", active: false}); 
+  slides.push({image:"../assets/images/mkting.jpeg", title:"Track your deals and Improve", content: "Our recommendation engine will track all your deals and get insightful reports on how your business is growing", active: false}); 
 
   var menuOptions = $scope.menuOptions = [];
   menuOptions.push({state:"enabled", name:"Sign In", url : "#signin"});
@@ -57,10 +26,9 @@ function MainController($scope) {
   menuOptions.push({state:"disabled", name:"Live Community", url : "#community"});
 
   var menus = $scope.menus = [];
-  menus.push({name:"Home", url : "#home"});
-  menus.push({name:"About", url : "#about"});
-  menus.push({name:"Contact", url : "#contact"});
-  menus.push({name:"Question ? Call us at +91 988 661 8989", url : "#contact"});
+  menus.push({name:"Blog", url : "#contact"});
+  menus.push({name:"Contact Us", url : "#contact"});
+  menus.push({name:"Sign In", url : "#contact"});
   
 
   var features = $scope.features = [];
@@ -76,7 +44,8 @@ function MainController($scope) {
 };  
 
 
-function CoreController($scope,  $route, $routeParams, $location) {
+
+function CoreController($scope) {
 
   var cmenus = $scope.cmenus = [];
   cmenus.push({name:"Biz Spark", class:"brand span9" , link : "#"});
@@ -84,25 +53,91 @@ function CoreController($scope,  $route, $routeParams, $location) {
   cmenus.push({name:"Signout", class:"span1", link:"#"});
   
   var leftNavs = $scope.leftNavs =  [];
-  leftNavs.push({title:"Send a coupon", link:"#sendCoupon", class:"active"});
-  leftNavs.push({title:"Redeem a coupon", link:"#redeemCoupon", class:"inactive"});
-  leftNavs.push({title:"Insights", link:"#insights", class:"inactive"});
-  leftNavs.push({title:"Manage customers", link:"#customers", class:"inactive"});
-  leftNavs.push({title:"See how it works", link:"#howitworks", class:"inactive"});
-
+  leftNavs.push({title:"<i class='icon-envelope'></i>&nbsp;Send a coupon", link:"#sendCoupon", class:"active"});
+  //leftNavs.push({title:"Insights", link:"#insights", class:"inactive"});
+  leftNavs.push({title:"<i class='icon-share'></i>&nbsp;Redeem a coupon", link:"#redeemCoupon", class:"inactive"});
+  leftNavs.push({title:"<i class='icon-user'></i>&nbsp;Manage customers", link:"#customers", class:"inactive"});
+  leftNavs.push({title:"<i class='icon-facetime-video'></i>&nbsp;See how it works", link:"#howitworks", class:"inactive"});
+  
   
   $scope.leftNavClicked = function($event, selectedIndex) {
-    for(i = 0 ; i < leftNavs.length; i++) {
+     for(var i = 0 ; i < leftNavs.length; i++) {
       if(i === selectedIndex) 
           $scope.leftNavs[i].class="active";
       else
           $scope.leftNavs[i].class="inactve";
       
     }
-    
+  };
+
+
+
+};
+
+
+function CustomerController($scope) {
+
+  var customers = $scope.customers = [];
+  customers.push({name:"Manish", email:"Manish_kumar@intuit.com", phone:"9886618989", loyaltyPoints:"20"});
+ customers.push({name:"Ajay", email:"Manish_kumar@intuit.com", phone:"123455353", loyaltyPoints:"20"});
+ customers.push({name:"Manas", email:"Manish_kumar@intuit.com", phone:"1234567890", loyaltyPoints:"75"});
+ customers.push({name:"Fazil", email:"Manish_kumar@intuit.com", phone:"2222222222", loyaltyPoints:"200"});
+ customers.push({name:"Siva", email:"Manish_kumar@intuit.com", phone:"7654324332", loyaltyPoints:"10"});
+ customers.push({name:"Ajit", email:"Manish_kumar@intuit.com", phone:"454312313", loyaltyPoints:"0"});
+  customers.push({name:"Ajay", email:"Manish_kumar@intuit.com", phone:"123455353", loyaltyPoints:"20"});
+ customers.push({name:"Manas", email:"Manish_kumar@intuit.com", phone:"1234567890", loyaltyPoints:"75"});
+ customers.push({name:"Fazil", email:"Manish_kumar@intuit.com", phone:"2222222222", loyaltyPoints:"200"});
+ customers.push({name:"Siva", email:"Manish_kumar@intuit.com", phone:"7654324332", loyaltyPoints:"10"});
+ customers.push({name:"Ajit", email:"Manish_kumar@intuit.com", phone:"454312313", loyaltyPoints:"0"});
+ 
+ $scope.myData = [{name: "Moroni", age: 50},
+                 {name: "Tiancum", age: 43},
+                 {name: "Jacob", age: 27},
+                 {name: "Nephi", age: 29},
+                 {name: "Enos", age: 34}];
+
+  $scope.gridOptions = { data: 'myData' };
+  
+
+  $scope.noOfPages = 7;
+  $scope.currentPage = 4;
+  $scope.maxSize = 5;
+  
+  $scope.setPage = function (pageNo) {
+    $scope.currentPage = pageNo;
+  };
+
+  $scope.bigNoOfPages = 18;
+  $scope.bigCurrentPage = 1;
+
+  function selectCustomer($event) {
+    alert('selected');
   }
 
 };
+
+
+function CouponController($scope) {
+  $scope.isCollapsed = false;
+
+};
+
+//To make core.html working uncomment the following lines. The main.html is breaking if i add this. So commenting it for time being.
+/*
+angular.module('bizSpark', []).config(['$routeProvider', function($routeProvider) {
+	  $routeProvider.when('/sendCoupon', {templateUrl: 'partials/sendCoupon.html', controller: CoreController }).
+	              when('/redeemCoupon', {templateUrl: 'partials/redeemCoupon.html', controller: CouponController }).
+	              when('/insights', {templateUrl: 'partials/insights.html', controller: CoreController }).
+	              when('/customers', {templateUrl: 'partials/customers.html', controller: CustomerController}).
+	              when('/howitworks', {templateUrl: 'partials/howItWorks.html', controller: CoreController}).
+	              otherwise({redirectTo : '/sendCoupon'});
+
+	  //$locationProvider.html5Mode(true);
+}]);
+
+
+*/
+
 
 
 
