@@ -19,17 +19,17 @@ function MainController($scope) {
   slides.push({image:"../assets/images/mkting.jpeg", title:"Track your deals and Improve", content: "Our recommendation engine will track all your deals and get insightful reports on how your business is growing", active: false}); 
 
   var menuOptions = $scope.menuOptions = [];
-  menuOptions.push({state:"enabled", name:"Sign In", url : "#signin"});
-  menuOptions.push({state:"enabled", name:"Help", url : "#help"});
+  menuOptions.push({state:"disabled", name:"Sign In", url : "#signin"});
+  menuOptions.push({state:"disabled", name:"Help", url : "#help"});
   menuOptions.push({state:"disabled", name:"Pricing", url : "#pricing"});
   menuOptions.push({state:"divider", name:""}); 
   menuOptions.push({state:"disabled", name:"How To Videos", url : "#video"});
   menuOptions.push({state:"disabled", name:"Live Community", url : "#community"});
 
   var menus = $scope.menus = [];
-  menus.push({name:"Blog", url : "#contact", class:"disabled"});
-  menus.push({name:"Contact Us", url : "#contact" , class:"disabled"});
-  menus.push({name:"Sign In", url : "#contact" , class:"disabled"});
+  menus.push({name:"Blog", url : "#contact"});
+  menus.push({name:"Contact Us", url : "mailto:referspark@gmail.com?subject=Help Needed"});
+  //menus.push({name:"Sign In", url : "#contact"});
   
 
   var features = $scope.features = [];
