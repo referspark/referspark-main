@@ -55,7 +55,7 @@
       	<div class="carousel-caption pull-right">
        	 <h1>{{slide.title}}</h1>
        	 <p>{{slide.content}}</p>
-      	  <a class="btn btn-large btn-primary" 	ng-click="initiateSignUp()">Sign up today</a>
+<!--       	  <a class="btn btn-large btn-primary" 	ng-click="initiateSignUp()">Get Early Access</a> -->
       	</div>
   	  </div>
     </slide>
@@ -67,14 +67,30 @@
  <!-- sign up form -->
 
 <div class="well">
- <form class="form-inline signupform">
-  <input type="text" class="input-large " placeholder="{{labelEmail}}" style= "height : 35px" ng-focus="{{signupEmailFocus}}" />
-  <input type="password" class="input-large " placeholder="{{labelpassword}}" style= "height : 35px"/>
-  <input type="password" class="input-large " placeholder="{{labelReEnterPassword}}" style= "height : 35px"/>
-  <button type="submit" class="btn btn-large btn-primary">Sign Up</button>
+ <form class="form-inline signupform css-form" name="form" novalidate>
+
+
+    <input type="email" class="input-xlarge" placeholder="{{labelEmail}}" style= "height : 35px" name="uEmail"  ng-model="user.email" required/>
+	&nbsp;&nbsp;
+  	<input type="number" class="input-xlarge" placeholder="{{labelPhone}}" style= "height : 35px"  name="uNumber"  ng-model="user.number" ngMinlength="10" ngMaxlength= "11" />&nbsp;&nbsp;
+  	<button type="submit" class="btn btn-large btn-primary"  style= "height : 45px" ng-disabled="form.$invalid">Get Early Access</button>
+	
+	<div ng-show="form.uEmail.$dirty && form.uEmail.$invalid">
+          <span ng-show="form.uEmail.$error.required" style="color:#ff2a00">Please enter your email address.</span>
+          <span ng-show="form.uEmail.$error.email" style="color:#ff2a00">Please enter a valid email address.</span>
+    </div>
+    
+    <div ng-show="form.uNumber.$dirty && form.uNumber.$invalid">Invalid:
+          <span ng-show="form.uNumber.$error.required">Tell us your phone number.</span>
+          <span ng-show="form.uNumber.$error.email">This is not a valid phone number.</span>
+    </div>
+    
+
+<!--   <input type="password" class="input-large " placeholder="{{labelpassword}}" style= "height : 35px"/> -->
+<!--   <input type="password" class="input-large " placeholder="{{labelReEnterPassword}}" style= "height : 35px"/> -->
 </form>
 </div>
-<!-- sugn up form ends-->
+<!-- sign up form ends-->
 
 
   <!-- START THE FEATURETTES -->

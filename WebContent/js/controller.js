@@ -4,11 +4,12 @@ angular.module('bizSpark', ['ui.bootstrap']);
 
 function MainController($scope) {
 
-  $scope.projectName = "Biz Spark";
+  $scope.projectName = "Refer Spark";
   $scope.menu_more = "More<span class='caret'></span>";
-  $scope.labelEmail = "Email";
+  $scope.labelEmail = "Email Address";
   $scope.labelpassword = "Password";
   $scope.labelReEnterPassword = "Re-Enter Password";
+  $scope.labelPhone = "Phone Number (optional)";
    
  
   var slides = $scope.slides = [];
@@ -26,9 +27,9 @@ function MainController($scope) {
   menuOptions.push({state:"disabled", name:"Live Community", url : "#community"});
 
   var menus = $scope.menus = [];
-  menus.push({name:"Blog", url : "#contact"});
-  menus.push({name:"Contact Us", url : "#contact"});
-  menus.push({name:"Sign In", url : "#contact"});
+  menus.push({name:"Blog", url : "#contact", class:"disabled"});
+  menus.push({name:"Contact Us", url : "#contact" , class:"disabled"});
+  menus.push({name:"Sign In", url : "#contact" , class:"disabled"});
   
 
   var features = $scope.features = [];
