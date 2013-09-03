@@ -105,9 +105,9 @@
 
 
     .signupform {
-        width : 100%;
-        margin-left: 20%;
-        margin-right: 20%;
+    	width : 780px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
 
