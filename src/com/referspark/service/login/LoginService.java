@@ -1,4 +1,4 @@
-package com.referspark.service;
+package com.referspark.service.login;
 
 import java.util.List;
 
@@ -7,8 +7,9 @@ import org.springframework.transaction.annotation.Transactional;
 import com.referspark.api.response.GenericSuccessFailureResponse;
 import com.referspark.dao.UserDao;
 import com.referspark.domain.Business;
+import com.referspark.service.BaseService;
 
-public class LoginService {
+public class LoginService extends BaseService {
 	private UserDao userDao;
 	
 	@Transactional
