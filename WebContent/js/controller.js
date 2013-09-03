@@ -14,9 +14,9 @@ function MainController($scope, $http) {
  
   var slides = $scope.slides = [];
   $scope.myInterval = 5000;
-  slides.push({image:"../assets/images/mkting.jpeg", title:"Get New customers", content: "Existing loyal customers will recommend your business to their friends and colleagues and drive new business", active: true}); 
-  slides.push({image:"../assets/images/mkting.jpeg", title:"Reward your Loyal Customers ", content: "Dont lose your customers to a competitor by rewarding your customers with discounts and offers !", active: false}); 
-  slides.push({image:"../assets/images/mkting.jpeg", title:"Track your deals and Improve", content: "Our recommendation engine will track all your deals and get insightful reports on how your business is growing", active: false}); 
+  slides.push({image:"assets/images/mkting.jpeg", title:"Get New customers", content: "Existing loyal customers will recommend your business to their friends and colleagues and drive new business", active: true}); 
+  slides.push({image:"assets/images/mkting.jpeg", title:"Reward your Loyal Customers ", content: "Dont lose your customers to a competitor by rewarding your customers with discounts and offers !", active: false}); 
+  slides.push({image:"assets/images/mkting.jpeg", title:"Track your deals and Improve", content: "Our recommendation engine will track all your deals and get insightful reports on how your business is growing", active: false}); 
 
   var menuOptions = $scope.menuOptions = [];
   menuOptions.push({state:"disabled", name:"Sign In", url : "#signin"});
@@ -33,9 +33,9 @@ function MainController($scope, $http) {
   
 
   var features = $scope.features = [];
-  features.push({image: "../assets/images/browser-icon-chrome.png", title:"Get New customers", subtitle: "Existing customers will recommend your business to their friends", description: "Easy way to issue referral based discounts and coupons which will grow your customer base multi-fold."});
-  features.push({image: "../assets/images/browser-icon-firefox.png",  title:"Reward Loyal customers", subtitle: "Your loyal customers are bound to get some special treats",  description: "We help you in efficiently  engaging with your regular customers and providing jaw dropping deals which gets them back to your store"});
-  features.push({image: "../assets/images/browser-icon-safari.png", title:"Great Insighst", subtitle: "Efficiently track deals and growing customer base",  description: "Our smart algorigthms will provide you insightful data and ensure you are a step ahead of your neighbour "});
+  features.push({image: "assets/images/browser-icon-chrome.png", title:"Get New customers", subtitle: "Existing customers will recommend your business to their friends", description: "Easy way to issue referral based discounts and coupons which will grow your customer base multi-fold."});
+  features.push({image: "assets/images/browser-icon-firefox.png",  title:"Reward Loyal customers", subtitle: "Your loyal customers are bound to get some special treats",  description: "We help you in efficiently  engaging with your regular customers and providing jaw dropping deals which gets them back to your store"});
+  features.push({image: "assets/images/browser-icon-safari.png", title:"Great Insighst", subtitle: "Efficiently track deals and growing customer base",  description: "Our smart algorigthms will provide you insightful data and ensure you are a step ahead of your neighbour "});
 
     $scope.signupEmailFocus = false;
     $scope.initiateSignUp = function() {
