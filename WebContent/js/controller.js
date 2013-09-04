@@ -1,6 +1,15 @@
-angular.module('bizSpark', ['ui.bootstrap']);
+//angular.module('bizSpark', ['ui.bootstrap']);
 
+angular.module('bizSpark', ['ui.bootstrap']).config(['$routeProvider', function($routeProvider) {
+	  $routeProvider.when('/sendCoupon', {templateUrl: 'partials/sendCoupon.html', controller: sendCouponController }).
+	              when('/redeemCoupon', {templateUrl: 'partials/redeemCoupon.html', controller: CouponController }).
+	              when('/insights', {templateUrl: 'partials/insights.html', controller: CoreController }).
+	              when('/customers', {templateUrl: 'partials/customers.html', controller: CustomerController}).
+	              when('/howitworks', {templateUrl: 'partials/howItWorks.html', controller: CoreController}).
+	              otherwise({redirectTo : '/sendCoupon'});
 
+	  //$locationProvider.html5Mode(true);
+}]);	
 
 function MainController($scope, $http) {
 
@@ -10,8 +19,7 @@ function MainController($scope, $http) {
   $scope.labelpassword = "Password";
   $scope.labelReEnterPassword = "Re-Enter Password";
   $scope.labelPhone = "Phone Number (optional)";
-   
- 
+  
   var slides = $scope.slides = [];
   $scope.myInterval = 5000;
   slides.push({image:"assets/images/mkting.jpeg", title:"Get New customers", content: "Existing loyal customers will recommend your business to their friends and colleagues and drive new business", active: true}); 
@@ -65,9 +73,9 @@ function MainController($scope, $http) {
 function CoreController($scope) {
 
   var cmenus = $scope.cmenus = [];
-  cmenus.push({name:"Biz Spark", class:"brand span9" , link : "#"});
-  cmenus.push({name:"My Account" ,class:"", link:"#"});
-  cmenus.push({name:"Signout", class:"span1", link:"#"});
+  cmenus.push({name:"Biz Spark", class:"brand" , link : "#"});
+  cmenus.push({name:"My Account" ,class:"nav pull-right", link:"#"});
+  cmenus.push({name:"Signout", class:"nav pull-right", link:"#"});
   
   var leftNavs = $scope.leftNavs =  [];
   leftNavs.push({title:"<i class='icon-envelope'></i>&nbsp;Send a coupon", link:"#sendCoupon", class:"active"});
@@ -133,27 +141,22 @@ function CustomerController($scope) {
 
 };
 
+function sendCouponController($scope) {
+	$scope.selected = undefined;
+	$scope.customers = ['Manish', 'Kumar', 'Ajay', 'Francis', 'Manas', 'Panda', 'Sivaraman'];
+
+};
+
 
 function CouponController($scope) {
   $scope.isCollapsed = false;
 
 };
 
-//To make core.html working uncomment the following lines. The main.html is breaking if i add this. So commenting it for time being.
-/*
-angular.module('bizSpark', []).config(['$routeProvider', function($routeProvider) {
-	  $routeProvider.when('/sendCoupon', {templateUrl: 'partials/sendCoupon.html', controller: CoreController }).
-	              when('/redeemCoupon', {templateUrl: 'partials/redeemCoupon.html', controller: CouponController }).
-	              when('/insights', {templateUrl: 'partials/insights.html', controller: CoreController }).
-	              when('/customers', {templateUrl: 'partials/customers.html', controller: CustomerController}).
-	              when('/howitworks', {templateUrl: 'partials/howItWorks.html', controller: CoreController}).
-	              otherwise({redirectTo : '/sendCoupon'});
-
-	  //$locationProvider.html5Mode(true);
-}]);
 
 
-*/
+
+
 
 
 
