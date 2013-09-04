@@ -15,10 +15,10 @@ public class ClientUtil {
 	@Autowired
 	private  ValidateBusinessInterestService businessInterestService = null;
 	
-	public byte[] getImageAsBytes(String imagePath, String ipAddress, ServletConfig config){
+	public byte[] getImageAsBytes(String imagePath, String ipAddress, ServletConfig config, String couponCode){
 		try {
 			SpringBeanAutowiringSupport.processInjectionBasedOnServletContext(this,config.getServletContext());
-			businessInterestService.trackEmailViewedDetails(ipAddress);
+			businessInterestService.trackEmailViewedDetails(ipAddress, couponCode);
 			URL u = new URL(imagePath);
 			System.out.println(imagePath+":"+ipAddress);
 			int contentLength = u.openConnection().getContentLength();

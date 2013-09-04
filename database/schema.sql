@@ -29,6 +29,7 @@ CREATE TABLE customer (id        INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 -- To Track Email access                              
 CREATE TABLE trackemail (id        INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                        ipaddress       VARCHAR(80),
+                       couponcode       VARCHAR(200),
                        time      VARCHAR(80)
                        ); 
                        

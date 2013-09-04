@@ -39,12 +39,13 @@ public class ValidateBusinessInterestService extends BaseService {
 	}
 	
 	@Transactional
-	public GenericSuccessFailureResponse trackEmailViewedDetails(String ipAddress){
+	public GenericSuccessFailureResponse trackEmailViewedDetails(String ipAddress, String couponCode){
 		GenericSuccessFailureResponse response = new GenericSuccessFailureResponse();
 		
 		TrackEmail trackEmail = new TrackEmail();
 		trackEmail.setIpAddress(ipAddress);
 		trackEmail.setTime(System.currentTimeMillis());
+		trackEmail.setCouponCode(couponCode);
 		try{
 			//For now lets use businessdao, lets change it latter :)
 			businessDao.save(trackEmail);

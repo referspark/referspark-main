@@ -24,8 +24,12 @@ public class TrackEmail {
 		@Column(name="ipaddress")
 		String ipAddress;
 		
+		@Column(name="couponcode")
+		String couponCode;
+		
 		@Column 
 		Long time;
+		
 		
 		public Integer getId() {
 			return id;
@@ -49,6 +53,14 @@ public class TrackEmail {
 
 		public void setTime(Long time) {
 			this.time = time;
+		}
+		
+		public String getCouponCode() {
+			return couponCode;
+		}
+
+		public void setCouponCode(String couponCode) {
+			this.couponCode = couponCode;
 		}
 
 }
