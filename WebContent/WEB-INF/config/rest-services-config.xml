@@ -29,18 +29,28 @@
             @Controller, @Service etc.  
       -->  
       
-       <context:component-scan base-package="com.referspark.controllers" />   
-     <!-- <context:component-scan base-package="com.blog.samples.services" />   -->
+      <context:component-scan base-package="com.referspark.controllers" />
+      
+      <bean id="applicationProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+  			<property name="location" value="classpath:com/referspark/properties/application.properties"/>
+	  </bean>   
+     
       <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping" />
       
-      <bean id="loginService" class="com.referspark.service.LoginService">
+      <!-- Base Service for ReferSpark rest services -->
+      <bean id="baseService" class="com.referspark.service.BaseService" abstract="true">
+      		<property name="applicationProperties" ref="applicationProperties"></property>
+      </bean>
+      
+      <bean id="loginService" class="com.referspark.service.login.LoginService" parent="baseService">
       		<property name="userDao" ref="userDao"></property>
       </bean>
+      
       <bean name="userDao" class="com.referspark.dao.UserDao">
 		<property name="sessionFactory" ref="ReferSparkSessionFactory" />
    	  </bean>
    	  
-   	  <bean id="businessInterestService" class="com.referspark.service.campaign.ValidateBusinessInterestService">
+   	  <bean id="businessInterestService" class="com.referspark.service.campaign.ValidateBusinessInterestService" parent="baseService">
    	        <property name="userDao" ref="userDao"/>
    	        <property name="businessDao" ref="businessDao"/>
    	  </bean>

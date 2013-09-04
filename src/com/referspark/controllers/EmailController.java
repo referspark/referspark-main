@@ -9,22 +9,25 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.referspark.api.response.GenericSuccessFailureResponse;
-import com.referspark.service.login.LoginService;
+import com.referspark.service.email.EmailService;
 
 @Controller
 @RequestMapping("/api")
-public class LoginController {
+public class EmailController {
 	
 	@Autowired
-	LoginService loginService = null;
+	EmailService emailService = null;
 	
-	@RequestMapping(value="/login", method = RequestMethod.GET)
+	@RequestMapping(value="/email", method = RequestMethod.GET)
 	@ResponseBody
-	public GenericSuccessFailureResponse getLogin(HttpServletRequest req) { 
-		String username = req.getParameter("username");
-		String password = req.getParameter("password");
+	public GenericSuccessFailureResponse sendEmail(HttpServletRequest req) { 
+		String to = req.getParameter("emailAddress");
+		String message = req.getParameter("message");
 		
-		return loginService.getLoginResponse(username, password);
+		GenericSuccessFailureResponse response = new GenericSuccessFailureResponse();
+		response.setSuccess(emailService.sendEmail(to, message));
+		
+		return response; 
    }  
 
 }

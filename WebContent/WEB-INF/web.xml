@@ -9,7 +9,8 @@
        <context-param>  
             <param-name>contextConfigLocation</param-name>  
             <param-value>  
-                 /WEB-INF/config/rest-services-config.xml  
+                 /WEB-INF/config/rest-services-config.xml
+                 /WEB-INF/config/email-config.xml
             </param-value>  
        </context-param>  
        <!-- Loads the Spring web application context using the config file defined above.  

@@ -9,8 +9,9 @@ import com.referspark.dao.BusinessDao;
 import com.referspark.dao.UserDao;
 import com.referspark.domain.Business;
 import com.referspark.domain.User;
+import com.referspark.service.BaseService;
 
-public class ValidateBusinessInterestService {
+public class ValidateBusinessInterestService extends BaseService {
   
 	private UserDao userDao;
 	private BusinessDao businessDao;
