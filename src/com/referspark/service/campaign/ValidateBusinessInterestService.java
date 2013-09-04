@@ -4,10 +4,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.referspark.api.response.GenericSuccessFailureResponse;
 import com.referspark.common.CommonException;
-import com.referspark.dao.BaseDao;
 import com.referspark.dao.BusinessDao;
 import com.referspark.dao.UserDao;
 import com.referspark.domain.Business;
+import com.referspark.domain.TrackEmail;
 import com.referspark.domain.User;
 import com.referspark.service.BaseService;
 
@@ -33,6 +33,22 @@ public class ValidateBusinessInterestService extends BaseService {
 			businessDao.save(business);
 		} catch (CommonException e) {			
 			e.printStackTrace();
+			response.setSuccess(false);
+		}
+		return response;
+	}
+	
+	@Transactional
+	public GenericSuccessFailureResponse trackEmailViewedDetails(String ipAddress){
+		GenericSuccessFailureResponse response = new GenericSuccessFailureResponse();
+		
+		TrackEmail trackEmail = new TrackEmail();
+		trackEmail.setIpAddress(ipAddress);
+		trackEmail.setTime(System.currentTimeMillis());
+		try{
+			//For now lets use businessdao, lets change it latter :)
+			businessDao.save(trackEmail);
+		} catch (CommonException e) {			
 			response.setSuccess(false);
 		}
 		return response;

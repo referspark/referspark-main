@@ -25,6 +25,11 @@ CREATE TABLE business (businessid       INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
 CREATE TABLE customer (id        INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                        name       VARCHAR(80),
                        email      VARCHAR(80),
-                       mobile     VARCHAR(20));                            
+                       mobile     VARCHAR(20));
+-- To Track Email access                              
+CREATE TABLE trackemail (id        INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                       ipaddress       VARCHAR(80),
+                       time      VARCHAR(80)
+                       ); 
                        
                        
