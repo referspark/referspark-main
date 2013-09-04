@@ -149,7 +149,7 @@ function sendCouponController($scope) {
 
 
 function CouponController($scope) {
-  $scope.isCollapsed = false;
+  $scope.isCollapsed = true;
 
 };
 
