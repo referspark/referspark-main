@@ -1,6 +1,6 @@
 //angular.module('bizSpark', ['ui.bootstrap']);
 
-angular.module('bizSpark', ['ui.bootstrap']).config(['$routeProvider', function($routeProvider) {
+var bizSparkApp = angular.module('bizSpark', ['ui.bootstrap']).config(['$routeProvider', function($routeProvider) {
 	  $routeProvider.when('/sendCoupon', {templateUrl: 'partials/sendCoupon.html', controller: sendCouponController }).
 	              when('/redeemCoupon', {templateUrl: 'partials/redeemCoupon.html', controller: CouponController }).
 	              when('/insights', {templateUrl: 'partials/insights.html', controller: CoreController }).
@@ -144,6 +144,14 @@ function CustomerController($scope) {
 function sendCouponController($scope) {
 	$scope.selected = undefined;
 	$scope.customers = ['Manish', 'Kumar', 'Ajay', 'Francis', 'Manas', 'Panda', 'Sivaraman'];
+	var todo = $scope.todo = {};
+	todo.title='sdf';
+	var blueTemplate = $scope.blueTemplate = {};
+	blueTemplate.line1 = "Thank you for shopping with us!!";
+	blueTemplate.line2 = "Now, earn points by referring our business to your friends. Each succesful referral will earn you reward points which you can redeem in your next purchase";
+	blueTemplate.line3 = "Just forward this email or the referral code to your friends" +
+										"and colleagues who might be interested.";
+	blueTemplate.line4 = " Each of them gets FLAT 30% OFF";
 
 };
 
@@ -155,6 +163,60 @@ function CouponController($scope) {
 
 
 
+//On esc event
+bizSparkApp.directive('onEsc', function() {
+  return function(scope, elm, attr) {
+    elm.bind('keydown', function(e) {
+      if (e.keyCode === 27) {
+        scope.$apply(attr.onEsc);
+      }
+    });
+  };
+});
+
+// On enter event
+bizSparkApp.directive('onEnter', function() {
+  return function(scope, elm, attr) {
+    elm.bind('keypress', function(e) {
+      if (e.keyCode === 13) {
+        scope.$apply(attr.onEnter);
+      }
+    });
+  };
+});
+
+// Inline edit directive
+bizSparkApp.directive('inlineEdit', function($timeout) {
+  return {
+    scope: {
+      model: '=inlineEdit',
+      handleSave: '&onSave',
+      handleCancel: '&onCancel'
+    },
+    link: function(scope, elm, attr) {
+      var previousValue;
+      
+      scope.edit = function() {
+        scope.editMode = true;
+        previousValue = scope.model;
+        
+        $timeout(function() {
+          elm.find('input')[0].focus();
+        }, 0, false);
+      };
+      scope.save = function() {
+        scope.editMode = false;
+        scope.handleSave({value: scope.model});
+      };
+      scope.cancel = function() {
+        scope.editMode = false;
+        scope.model = previousValue;
+        scope.handleCancel({value: scope.model});
+      };
+    },
+    templateUrl: 'partials/inline-edit.html'
+  };
+});
 
 
 

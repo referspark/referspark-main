@@ -1,4 +1,7 @@
 <div>
+<!--     <li ng-repeat="todo in todos" inline-edit="todo.title" on-save="updateTodo(todo.title)" on-cancel="cancelEdit(todo.title)"></li> -->
+
+
 <table width="666" border="0" cellspacing="0" cellpadding="0"
 		style="border-collapse: separate; border-spacing: 0;">
 		<tbody>
@@ -11,19 +14,15 @@
 
 								<td bgcolor="#44525b"
 									style="vertical-align: top; text-align: left; color: #FFFFFF; padding: 20px 8px 0 20px;">
-									<span
+									<span inline-edit="blueTemplate.line1" on-save="updateTodo(todo.title)" on-cancel="cancelEdit(todo.title)"
 									style="font-size: 15px; font-family: Arial, Helvetica, sans-serif;">
-										Thank you for shopping with us!! <br>
-									<br> Now, earn points by referring our business to your
-										friends. Each succesful referral will earn you reward points
-										which you can redeem in your next purchase
-								</span> <br>
-								<br> <span
-									style="font-size: 15px; font-family: Arial, Helvetica, sans-serif;">
-										Just forward this email or the referral code to your friends
-										and colleagues who might be interested. Each of them gets <span
-										style="font-size: 18px; color: orange;">FLAT
-											$discountRate</span> discount <sup>*</sup>.
+										</span>
+									<br> <span inline-edit="blueTemplate.line2" on-save="updateTodo(todo.title)" on-cancel="cancelEdit(todo.title)">
+								</span> 
+								<br> <span inline-edit="blueTemplate.line3" on-save="updateTodo(todo.title)" on-cancel="cancelEdit(todo.title)">
+										
+								</span><span  style="font-size: 18px; color: orange;" inline-edit="blueTemplate.line4" on-save="updateTodo(todo.title)" on-cancel="cancelEdit(todo.title)">
+										
 								</span> <br>
 								<br>
 								<br>
