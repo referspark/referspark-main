@@ -36,7 +36,7 @@ function MainController($scope, $http) {
 
   var menus = $scope.menus = [];
   menus.push({name:"Blog", url : "#blogs"});
-  menus.push({name:"Contact Us", url : "mailto:referspark@gmail.com?subject=Help Needed"});
+  menus.push({name:"Contact Us", url : "mailto:contact@referspark.com?subject=Help Needed"});
   //menus.push({name:"Sign In", url : "#contact"});
   
 
