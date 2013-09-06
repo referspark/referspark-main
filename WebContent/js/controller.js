@@ -13,7 +13,8 @@ var bizSparkApp = angular.module('bizSpark', ['ui.bootstrap']).config(['$routePr
 
 function MainController($scope, $http) {
 
-  $scope.projectName = "Refer Spark";
+  $scope.projectName = "<span style='color:#a1ce69'>Refer</span><span style='color:#eef0eb'>Spark</span>";
+  
   $scope.menu_more = "More<span class='caret'></span>";
   $scope.labelEmail = "Email Address";
   $scope.labelpassword = "Password";
@@ -22,9 +23,9 @@ function MainController($scope, $http) {
   
   var slides = $scope.slides = [];
   $scope.myInterval = 5000;
-  slides.push({image:"assets/images/mkting.jpeg", title:"Create Referral Coupons", content: "Existing loyal customers will REFER your business to their friends and colleagues and drive new business.", active: true}); 
-  slides.push({image:"assets/images/mkting.jpeg", title:"Reward your Loyal Customers ", content: "REWARD your customers for each successful referral they get to your store with discounts and offers !", active: false}); 
-  slides.push({image:"assets/images/mkting.jpeg", title:"Grow your Business", content: "Our recommendation engine will track all your referral coupons and provide insightful reports on how your business is GROWing.", active: false}); 
+  slides.push({image:"", title:"Create Referral Coupons", content: "Existing loyal customers will REFER your business to their friends and colleagues and drive new business.", active: true}); 
+  slides.push({image:"", title:"Reward your Loyal Customers ", content: "REWARD your customers for each successful referral they get to your store with discounts and offers !", active: false}); 
+  slides.push({image:"", title:"Grow your Business", content: "Our recommendation engine will track all your referral coupons and provide insightful reports on how your business is GROWing.", active: false}); 
 
   var menuOptions = $scope.menuOptions = [];
   menuOptions.push({state:"disabled", name:"Sign In", url : "#signin"});
