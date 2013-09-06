@@ -60,12 +60,16 @@ function MainController($scope, $http) {
     		method : 'GET',
     		url : '../api/addPotentialCustomer.json' + '?' + 'email=' + $scope.user.email + '&mobile=' + $scope.user.number + '&businessname=' + $scope.user.businessName 
     	}).success(function(data, status, headers){
-    		alert('User Added succesfully... Beautify me');
+    		$scope.userAddSuccess = true;
     	}).error(function(data, status, header){
-    		alert('Error in creating user');
+    		$scope.userAddError = true;
+    		//alert('Error in creating user');
     	});
     	
     };
+    
+    $scope.userAddSuccess = false;
+    $scope.userAddError = false;
 };  
 
 
