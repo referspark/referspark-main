@@ -34,3 +34,5 @@ CREATE TABLE trackemail (id        INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
                        ); 
                        
                        
+CREATE TABLE unsubscribed_mailinglist (id     INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                                       email  VARCHAR(80));
