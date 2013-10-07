@@ -1,8 +1,13 @@
 package com.referspark.dao;
 
+import org.hibernate.Criteria;
+import org.hibernate.HibernateException;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import com.referspark.common.CommonException;
+import com.referspark.domain.Business;
 
 public class BusinessDao implements BaseDao{
 	
@@ -17,15 +22,22 @@ public class BusinessDao implements BaseDao{
 			throw new CommonException();
 
 	}
-	public Object update(Object obj) throws CommonException{
-		return null;
+	public void update(Object obj) throws CommonException{
+		sessionFactory.getCurrentSession().update(obj);
 	}
 	public Object delete(Object obj) throws CommonException{
 		return null;
 	}	
 	
 	public Object readById(int id) throws CommonException{
-		return null;
+		Session session = sessionFactory.getCurrentSession();
+		Criteria criteria = session.createCriteria(Business.class);
+			criteria.add(Restrictions.eq("businessid", id));
+		try{
+			return criteria.uniqueResult();
+		}catch (HibernateException e) {
+			throw new CommonException();
+		}
 	}
 	
 	public void setSessionFactory(SessionFactory sessionFactory) {

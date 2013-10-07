@@ -21,8 +21,8 @@ public class UserDao implements BaseDao{
 			throw new CommonException();
 
 	}
-	public Object update(Object obj) throws CommonException{
-		return null;
+	public void update(Object obj) throws CommonException{
+		sessionFactory.getCurrentSession().update(obj);
 	}
 	public Object delete(Object obj) throws CommonException{
 		return null;

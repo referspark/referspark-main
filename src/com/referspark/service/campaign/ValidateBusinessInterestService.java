@@ -9,9 +9,9 @@ import com.referspark.dao.UserDao;
 import com.referspark.domain.Business;
 import com.referspark.domain.TrackEmail;
 import com.referspark.domain.User;
-import com.referspark.service.BaseService;
+//import com.referspark.service.BaseService;
 
-public class ValidateBusinessInterestService extends BaseService {
+public class ValidateBusinessInterestService {
   
 	private UserDao userDao;
 	private BusinessDao businessDao;
@@ -29,7 +29,7 @@ public class ValidateBusinessInterestService extends BaseService {
 			user = (User)userDao.readById(userid);
 			Business business = new Business(); 
 			business.setUser(user);
-			business.setName(businessName);
+			business.setBusinessname(businessName);
 			businessDao.save(business);
 		} catch (CommonException e) {			
 			e.printStackTrace();

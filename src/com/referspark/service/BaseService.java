@@ -5,11 +5,9 @@ import java.util.Properties;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
-public abstract class BaseService {
-	
-	@Autowired
+public class BaseService {
 	Properties applicationProperties = null;
-
+	
 	public Properties getApplicationProperties() {
 		return applicationProperties;
 	}
