@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.referspark.api.response.CreateBusinessResponse;
+import com.referspark.api.response.GetExistingMiniBusinessResponse;
 import com.referspark.common.CommonException;
 import com.referspark.dao.BusinessDao;
 import com.referspark.dao.UserDao;
@@ -96,6 +97,34 @@ public class CreateBusinessService {
 			e.printStackTrace();
 			response.setSuccess(false);
 		}
+		return response;
+	}
+	
+	@Transactional
+	public GetExistingMiniBusinessResponse getExistingMiniBusiness(int businessId){
+		GetExistingMiniBusinessResponse response = new GetExistingMiniBusinessResponse();
+		
+		if(businessId == -1){
+			response.setGeneratedBusinessId(-1);
+			response.setSuccess(false);
+			return response;
+		}
+		try {
+			Business business = (Business)businessDao.readById(businessId);
+			if(business == null){
+				response.setSuccess(false);
+			}else{
+				response.setGeneratedBusinessId(businessId);
+		    	response.setBusinessname(business.getBusinessname());
+			    response.setEmail(business.getUser().getEmail());
+			    response.setSuccess(true);
+			}
+		} catch (CommonException e) {
+			response.setSuccess(false);
+			response.setGeneratedBusinessId(-1);
+			e.printStackTrace();
+		}	
+		
 		return response;
 	}
 	

@@ -50,4 +50,18 @@ public class CreateBusinessController {
 		
 		return createBusinessService.createBusinessWithMinimumParams(email, businessName);
 	}
+   
+   @RequestMapping(value="/getExistingMiniBusiness", method = RequestMethod.GET)
+   @ResponseBody
+   public GenericSuccessFailureResponse getExistingMiniBusiness(HttpServletRequest req){
+	   String businessIdStr = req.getParameter("businessid");
+	   int businessId = -1;
+	   try{
+		   businessId = Integer.parseInt(businessIdStr);
+	   }catch(NumberFormatException nfe){
+		   businessId = -1;
+	   }
+	   
+	   return createBusinessService.getExistingMiniBusiness(businessId);
+   }
 }

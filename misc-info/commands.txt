@@ -1,0 +1,5 @@
+scp command:
+scp -i  ~/Dropbox/amazonkey/refersparkkey.pem /Users/mpanda/work/export/referspark.war ubuntu@54.213.138.23:
+
+ssh command:
+ssh -l ubuntu -i ~/Dropbox/amazonkey/refersparkkey.pem 54.213.138.23
